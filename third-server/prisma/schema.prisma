@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model forum {
+  id            Int       @id @unique @default(autoincrement())
+  Beskrivning     String
+  beskrivningPrev String
+  skapadDatum     String
+  skapadTid       String
+  threadIndex     Int
+  user            String
+  mne             String @map("Ämne")
+  mneLink         String @map("ämneLink")
+}
+
+model users {
+  id            Int       @id @unique @default(autoincrement())
+  password  String
+  userindex Int?
+  username  String
+}
